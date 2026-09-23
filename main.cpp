@@ -54,6 +54,9 @@ void printBinaryFile(const string& binPath) {
     in.close();
 }
 
+
+
+
 int main() {
     char menu;
     while (true) {
