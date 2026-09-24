@@ -15,7 +15,7 @@ bool textToBinary(const string& textPath, const string& binPath) {
     ifstream in(textPath);
     ofstream out(binPath, ios::binary);
     if (in.fail() || out.fail()) {
-        cerr << "Error opening files" << endl;
+        cout << "Error opening files" << endl;
         return false;
     }
     carRecord record;
@@ -36,10 +36,11 @@ bool textToBinary(const string& textPath, const string& binPath) {
 void printBinaryFile(const string& binPath) {
     ifstream in(binPath, ios::binary);
     if (in.fail()) {
-        cerr << "Error opening files" << endl;
+        cout << "Error opening files" << endl;
         return;
 
     }
+    cout << "Output of a binary file" << endl;
     carRecord record;
     int count = 0;
 
@@ -60,7 +61,8 @@ void printBinaryFile(const string& binPath) {
 int main() {
     char menu;
     while (true) {
-        cout << "1. Convert the text to binary\n"
+        cout << "\n1. Convert the text to binary\n"
+        << "2. Output of a binary file\n"
         << "0. Exit\n";
         cout << "Enter your choice: ";
         cin >> menu;
@@ -71,10 +73,12 @@ int main() {
                 string binFile = "cars100.bin";
                 if (textToBinary(textFile, binFile)) {
                     cout << "Binary File Successfully Converted" << endl;
-                    cout << "The contents of the binary file" << endl;
-                    printBinaryFile(binFile);
-                    cout << endl;
                 }
+                break;
+            }
+            case '2': {
+                string binFile = "cars100.bin";
+                printBinaryFile(binFile);
                 break;
             }
             case '0': {
